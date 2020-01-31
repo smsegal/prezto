@@ -9,3 +9,27 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+
+export UNIX_TYPE=$(uname -s)
+typeset -U path
+path=(
+    $HOME/scripts
+    $HOME/.cargo/bin
+    $HOME/.emacs.d/bin
+    $HOME/.poetry/bin
+    $HOME/.local/bin
+    /usr/local/bin
+    /usr/local/sbin
+    /usr/bin
+    /usr/sbin
+    $path
+)
+if [[ $UNIX_TYPE = "Darwin" ]]; then
+    path=(
+        $HOME/Library/Python/3.8/bin
+        /opt/local/bin
+        /opt/local/sbin
+        $path
+    )
+fi
