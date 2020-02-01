@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #
 # Sets Prezto options.
 #
@@ -42,11 +44,13 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions'           \
   'fast-syntax-highlighting'  \
   'osx'                       \
+  'gpg'                       \
+  'pacman'                    \
   'gnu-utility'               \
   'fzy'                       \
   'enhancd'                   \
   'clipboard'                 \
-  'alias-tips'                \
+  'alias-tips'            \
   'tmux'                      \
   'zsh-z'
 
@@ -117,7 +121,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
+zstyle ':prezto:module:pacman' frontend 'yay'
 
 #
 # Prompt
@@ -234,8 +238,11 @@ zstyle ':prezto:module:tmux:session' name 'work'
 # Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
-# zstyle ':prezto:module:utility' safe-ops 'yes'
+zstyle ':prezto:module:utility' safe-ops 'no'
 
 
 # Enhancd
 zstyle ":prezto:module:enhancd" command "fzy"
+
+# Alias tips
+zstyle ":prezto:module:alias-tips" text "Alias tip: "

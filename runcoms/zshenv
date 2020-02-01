@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # Defines environment variables.
 #
@@ -14,7 +15,6 @@ fi
 export UNIX_TYPE=$(uname -s)
 typeset -U path
 path=(
-    $HOME/scripts
     $HOME/.cargo/bin
     $HOME/.emacs.d/bin
     $HOME/.poetry/bin
