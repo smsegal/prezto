@@ -33,3 +33,9 @@ if [[ $UNIX_TYPE = "Darwin" ]]; then
         $path
     )
 fi
+
+export EDITOR="emacsclient"
+export VISUAL="emacsclient -c"
+export ALTERNATE_EDITOR=""
+
+export XDG_CONFIG_HOME="$HOME/.config"
