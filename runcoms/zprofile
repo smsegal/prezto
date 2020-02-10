@@ -49,8 +49,10 @@ path=(
     $HOME/go/bin
     /usr{/local,}/{bin,sbin}
     /opt/local/{bin,sbin}
+    /snap/bin
     $path
 )
+export PATH
 
 #
 # Less

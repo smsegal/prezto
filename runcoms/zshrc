@@ -54,8 +54,14 @@ eval "$(direnv hook zsh)"
 # fzf keybindings
 source /usr/share/fzf/shell/key-bindings.zsh
 
+# Nix Package Manager
+if [ -x $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
 # Pyenv setup
 
+# lazy load
 # Check if 'pyenv' is a command in $PATH
 if [ $commands[pyenv] ]; then
   source '/home/shane/.pyenv/libexec/../completions/pyenv.zsh'
