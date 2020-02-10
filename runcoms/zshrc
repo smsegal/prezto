@@ -29,6 +29,8 @@ alias cat="bat --theme='zenburn'"
 
 alias gst="git status"
 
+alias ytop="ytop -p"
+
 function tldr() {
     command tldr $1 | bat -p
 }
@@ -41,18 +43,51 @@ function git-ignore () {
     curl -L -s "https://www.gitignore.io/api/$*";
 }
 
-
 if [[ $UNIX_TYPE = "Darwin" ]]; then
     export XDG_CACHE_HOME="$HOME/Library/Caches/org.freedesktop"
     mkdir -p "${XDG_CACHE_HOME}"
 fi
 
+# Direnv
 eval "$(direnv hook zsh)"
 
-bindkey "^d" fzy-cd-widget
-bindkey "^f" fzy-file-widget
-bindkey "^p" fzy-proc-widget
-bindkey "^r" fzy-history-widget
+# fzf keybindings
+source /usr/share/fzf/shell/key-bindings.zsh
+
+# Pyenv setup
+
+# Check if 'pyenv' is a command in $PATH
+if [ $commands[pyenv] ]; then
+  source '/home/shane/.pyenv/libexec/../completions/pyenv.zsh'
+  # Placeholder 'pyenv' shell function:
+  # Will only be executed on the first call to 'pyenv'
+  pyenv() {
+    # Remove this function, subsequent calls will execute 'pyenv' directly
+    unfunction "$0"
+
+    export PATH="/home/shane/.pyenv/shims:${PATH}"
+    export PYENV_SHELL=zsh
+    command pyenv rehash 2>/dev/null
+    pyenv() {
+        local command
+        command="${1:-}"
+        if [ "$#" -gt 0 ]; then
+            shift
+        fi
+
+        case "$command" in
+        rehash|shell)
+            eval "$(pyenv "sh-$command" "$@")";;
+        *)
+            command pyenv "$command" "$@";;
+        esac
+    }
+
+    # Execute 'kubectl' binary
+    $0 "$@"
+  }
+fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

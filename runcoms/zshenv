@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 #
 # Defines environment variables.
 #
@@ -11,31 +11,5 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-
-export UNIX_TYPE=$(uname -s)
-typeset -U path
-path=(
-    $HOME/.cargo/bin
-    $HOME/.emacs.d/bin
-    $HOME/.poetry/bin
-    $HOME/.local/bin
-    /usr/local/bin
-    /usr/local/sbin
-    /usr/bin
-    /usr/sbin
-    $path
-)
-if [[ $UNIX_TYPE = "Darwin" ]]; then
-    path=(
-        $HOME/Library/Python/3.8/bin
-        /opt/local/bin
-        /opt/local/sbin
-        $path
-    )
-fi
-
-export EDITOR="emacsclient"
-export VISUAL="emacsclient -c"
-export ALTERNATE_EDITOR=""
-
+export PYENV_ROOT="$HOME/.pyenv"
 export XDG_CONFIG_HOME="$HOME/.config"
