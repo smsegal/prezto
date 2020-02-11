@@ -32,7 +32,7 @@ alias gst="git status"
 alias ytop="ytop -p"
 
 function tldr() {
-    command tldr $1 | bat -p
+    command tldr "$1" | bat -p
 }
 
 function cdroot() {
@@ -52,7 +52,12 @@ fi
 eval "$(direnv hook zsh)"
 
 # fzf keybindings
-source /usr/share/fzf/shell/key-bindings.zsh
+if [[ $UNIX_TYPE = "Darwin" ]]; then
+    fzf_bindings_path=/opt/local/share/fzf/shell
+else
+    fzf_bindings_path=/usr/share/fzf/shell
+fi
+source $fzf_bindings_path/key-bindings.zsh
 
 # Nix Package Manager
 if [ -x $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
