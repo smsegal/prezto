@@ -46,9 +46,10 @@ zstyle ':prezto:load' pmodule \
   'osx'                       \
   'gnu-utility'               \
   'clipboard'                 \
-  'alias-tips'            \
+  'alias-tips'                \
   'tmux'                      \
-  'zsh-z'
+  'zsh-z'                     \
+  'zsh-auto-notify'
 
 #
 # Autosuggestions
