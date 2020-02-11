@@ -52,8 +52,10 @@ fi
 eval "$(direnv hook zsh)"
 
 # fzf keybindings
-if [[ $UNIX_TYPE = "Darwin" ]]; then
+if [[ $HOST = "ShaneMBP.local" ]]; then
     fzf_bindings_path=/opt/local/share/fzf/shell
+elif [[ $HOST = "smsegal-pc" ]]; then
+    fzf_bindings_path=/usr/share/fzf
 else
     fzf_bindings_path=/usr/share/fzf/shell
 fi
