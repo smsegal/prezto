@@ -34,7 +34,7 @@ alias ytop="ytop -p"
 alias gpg=gpg2
 
 function tldr() {
-    command tldr $1 | bat -p
+    command tldr "$1" | bat -p
 }
 
 function cdroot() {
@@ -67,7 +67,16 @@ export GPG_TTY
 eval "$(direnv hook zsh)"
 
 # fzf keybindings
-source /usr/share/doc/fzf/key-bindings.zsh
+if [[ $HOST = "ShaneMBP.local" ]]; then
+    fzf_bindings_path=/opt/local/share/fzf/shell
+elif [[ $HOST = "smsegal-pc" ]]; then
+    fzf_bindings_path=/usr/share/fzf
+elif [[ "$(lsb_release -sc)" == "void" ]]; then
+    fzf_bindings_path=/usr/share/doc/fzf
+else
+    fzf_bindings_path=/usr/share/fzf/shell
+fi
+source $fzf_bindings_path/key-bindings.zsh
 
 # Nix Package Manager
 if [ -x $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
