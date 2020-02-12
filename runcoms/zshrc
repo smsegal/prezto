@@ -56,6 +56,8 @@ if [[ $HOST = "ShaneMBP.local" ]]; then
     fzf_bindings_path=/opt/local/share/fzf/shell
 elif [[ $HOST = "smsegal-pc" ]]; then
     fzf_bindings_path=/usr/share/fzf
+elif [[ "$(lsb_release -sc)" == "void" ]]; then
+    fzf_bindings_path=/usr/share/doc/fzf
 else
     fzf_bindings_path=/usr/share/fzf/shell
 fi
