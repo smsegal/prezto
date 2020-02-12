@@ -13,3 +13,4 @@ fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export XDG_CONFIG_HOME="$HOME/.config"
+

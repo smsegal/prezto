@@ -55,6 +55,11 @@ path=(
 export PATH
 
 #
+# GPG-Agent
+#
+eval $(gpg-agent --daemon --enable-ssh-support --sh)
+
+#
 # Less
 #
 
