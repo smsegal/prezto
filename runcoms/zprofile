@@ -45,7 +45,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 
 path=(
-    $HOME/.{cargo,emacs.d,poetry,local,pyenv}/bin
+    $HOME/.{cargo,emacs.d,poetry,local,pyenv,nix-profile}/bin
     $HOME/go/bin
     /usr{/local,}/{bin,sbin}
     /opt/local/{bin,sbin}
@@ -57,7 +57,8 @@ export PATH
 #
 # GPG-Agent
 #
-eval $(gpg-agent --daemon --enable-ssh-support --sh)
+export GNUPGHOME="$HOME/.gnupg"
+
 
 #
 # Less
