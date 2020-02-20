@@ -11,6 +11,13 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+#
+# GPG-Agent
+#
+export GNUPGHOME="$HOME/.gnupg"
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
 export PYENV_ROOT="$HOME/.pyenv"
 export XDG_CONFIG_HOME="$HOME/.config"
 export UNIX_TYPE=$(uname -s)

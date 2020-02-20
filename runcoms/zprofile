@@ -54,11 +54,6 @@ path=(
 )
 export PATH
 
-#
-# GPG-Agent
-#
-export GNUPGHOME="$HOME/.gnupg"
-
 
 #
 # Less
